@@ -17,7 +17,7 @@ class MainPageVMClass {
   showBottomTab = false;
 
   setMode = (mode: MainPageVMClass["showMode"]) => {
-    console.log("setMode", mode);
+    this.showBottomTab = false;
     if (mode === this.showMode || mode === null) {
       this.showMode = null;
       this.showBottomTab = false;

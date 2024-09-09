@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 import SearchBar from "./searchBar";
 import IconButton from "./iconButton";
@@ -52,13 +52,18 @@ const BottomTabContainer = styled.div`
   bottom: 0;
 
   box-sizing: border-box;
+
+  div {
+    pointer-events: auto;
+  }
 `;
 
 interface TotalFrameProps {
-    vm: any;
+  vm: any;
+  tabView?: ReactElement | null;
 }
 
-const TotalFrame = observer(({vm}: TotalFrameProps) => {
+const TotalFrame = observer(({ vm, tabView }: TotalFrameProps) => {
   return (
     <>
       <KakaoMap />
@@ -67,7 +72,11 @@ const TotalFrame = observer(({vm}: TotalFrameProps) => {
           <SearchBar />
           <ButtonsContainer>
             <LeftSideButton>
-              <IconButton icon="pallete" isClicked={vm.showMode === "pallete"} onClick={() => vm.setMode("pallete")} />
+              <IconButton
+                icon="pallete"
+                isClicked={vm.showMode === "pallete"}
+                onClick={() => vm.setMode("pallete")}
+              />
               {/*<IconButton
                 icon="footprint"
                 isClicked={vm.showMode === "footprint"}
@@ -78,7 +87,11 @@ const TotalFrame = observer(({vm}: TotalFrameProps) => {
                 isClicked={vm.showMode === "chatlogs"}
                 onClick={() => vm.setMode("chatlogs")}
               />
-              <IconButton icon="cash" isClicked={vm.showMode === "cash"} onClick={() => vm.setMode("cash")} />
+              <IconButton
+                icon="cash"
+                isClicked={vm.showMode === "cash"}
+                onClick={() => vm.setMode("cash")}
+              />
               <IconButton
                 icon="pathfind"
                 isClicked={vm.showMode === "pathfind"}
@@ -86,7 +99,11 @@ const TotalFrame = observer(({vm}: TotalFrameProps) => {
               />
             </LeftSideButton>
             <RightSideButton>
-              <IconButton icon="profile" isClicked={vm.showMode === "profile"} onClick={() => vm.setMode("profile")} />
+              <IconButton
+                icon="profile"
+                isClicked={vm.showMode === "profile"}
+                onClick={() => vm.setMode("profile")}
+              />
               <IconButton
                 icon="language"
                 isClicked={vm.showMode === "language"}
@@ -96,7 +113,7 @@ const TotalFrame = observer(({vm}: TotalFrameProps) => {
           </ButtonsContainer>
         </FunctionContainer>
         <BottomTabContainer>
-          <BottomTab children={<div></div>} isVisible={vm.showBottomTab}/>
+          <BottomTab children={tabView} isVisible={vm.showBottomTab} />
         </BottomTabContainer>
       </TotalFrameContainer>
     </>

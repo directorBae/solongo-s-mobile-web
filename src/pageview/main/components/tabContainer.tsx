@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {keyframes, css} from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 // 나타날 때 아래에서 위로 슬라이드 애니메이션
 const slideUp = keyframes`
@@ -23,7 +23,7 @@ const slideDown = keyframes`
 
 const TabContainer = styled.div<{ $isVisible: boolean }>`
   width: 100vw;
-  height: 45vh;
+  height: 50vh;
   box-sizing: border-box;
   background: #ffffff;
   border-top: 0.5px solid #bebebe;
@@ -61,6 +61,12 @@ const Grabber = styled.div`
   border-radius: 4px;
 `;
 
+const ContextMaxWidth = styled.div`
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+`;
+
 interface TabProps {
   children: React.ReactNode;
   isVisible: boolean;
@@ -73,7 +79,7 @@ const BottomTab = ({ children, isVisible }: TabProps) => {
         {" "}
         <Grabber />
       </GrabberContainer>
-      {children}
+      <ContextMaxWidth>{children}</ContextMaxWidth>
     </TabContainer>
   );
 };
