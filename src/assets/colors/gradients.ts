@@ -9,7 +9,7 @@ const gradientsObj = {
   },
   2: {
     bg: "linear-gradient(180deg, #52FF00 0%, #04D200 100%)",
-    text: "#ffffff",
+    text: "#000000",
   },
   3: {
     bg: "linear-gradient(180deg, #FF26C2 0%, #E4B200 100%)",

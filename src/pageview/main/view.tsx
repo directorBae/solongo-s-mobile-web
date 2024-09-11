@@ -3,6 +3,7 @@ import TotalFrame from "./components/TotalFrame";
 import { observer } from "mobx-react";
 import PalleteView from "./tabs/palletes/view";
 import ChatlogView from "./tabs/chatlog/view";
+import PathfindView from "./tabs/pathfind/view";
 
 interface MainViewProps {
   vm: any;
@@ -17,6 +18,9 @@ const MainView = observer(({ vm }: MainViewProps) => {
       break;
     case "chatlogs":
       view = <ChatlogView />;
+      break;
+    case "pathfind":
+      view = <PathfindView />;
       break;
     default:
       view = null;

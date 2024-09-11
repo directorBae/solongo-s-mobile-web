@@ -1,25 +1,32 @@
-import React from "react";
 import styled from "styled-components";
 
-const InputStyle = styled.input`
-  width: 5rem;
-  height: 0.5rem;
+const InputBarContainer = styled.div`
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  flex-direction: row;
+
+  position: relative;
 `;
 
-interface UserInputProps {
-  type: string;
-  value: string;
-  onChange: (value: string) => void;
-}
+const InputBarBox = styled.input`
+  box-sizing: border-box;
 
-const UserInput: React.FC<UserInputProps> = ({ type, value, onChange }) => {
-  return (
-    <InputStyle
-      type={type}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  );
-};
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
 
-export default UserInput;
+  display: flex;
+
+  background: #ffffff;
+  border: 0.5px solid rgba(28, 28, 28, 0.5);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+
+  font-size: 14px;
+`;
+
+export { InputBarContainer, InputBarBox };

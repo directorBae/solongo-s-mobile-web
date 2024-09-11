@@ -87,11 +87,11 @@ const TotalFrame = observer(({ vm, tabView }: TotalFrameProps) => {
                 isClicked={vm.showMode === "chatlogs"}
                 onClick={() => vm.setMode("chatlogs")}
               />
-              <IconButton
+              {/* <IconButton
                 icon="cash"
                 isClicked={vm.showMode === "cash"}
                 onClick={() => vm.setMode("cash")}
-              />
+              /> */}
               <IconButton
                 icon="pathfind"
                 isClicked={vm.showMode === "pathfind"}
@@ -99,11 +99,11 @@ const TotalFrame = observer(({ vm, tabView }: TotalFrameProps) => {
               />
             </LeftSideButton>
             <RightSideButton>
-              <IconButton
+              {/* <IconButton
                 icon="profile"
                 isClicked={vm.showMode === "profile"}
                 onClick={() => vm.setMode("profile")}
-              />
+              /> */}
               <IconButton
                 icon="language"
                 isClicked={vm.showMode === "language"}

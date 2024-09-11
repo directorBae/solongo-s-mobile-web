@@ -94,7 +94,15 @@ const ContentsCard = ({
             {contents.date + "에 생성됨"}
           </div>
         </Title>
-        <img src={Bin} width={20} alt="bin" style={{ cursor: "pointer" }} />
+        <img
+          src={Bin}
+          width={20}
+          alt="bin"
+          style={{
+            cursor: "pointer",
+            filter: textColor === "#ffffff" ? "none" : "invert(1)",
+          }}
+        />
       </TitleSection>
       <Context>{contents.context}</Context>
       {buttons && (
