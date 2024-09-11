@@ -24,6 +24,8 @@ const slideDown = keyframes`
 const TabContainer = styled.div<{ $isVisible: boolean }>`
   width: 100vw;
   height: 50vh;
+  min-height: 450px;
+
   box-sizing: border-box;
   background: #ffffff;
   border-top: 0.5px solid #bebebe;
@@ -65,6 +67,12 @@ const ContextMaxWidth = styled.div`
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.2rem;
+  
 `;
 
 interface TabProps {

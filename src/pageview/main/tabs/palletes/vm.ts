@@ -32,6 +32,13 @@ class PalleteVMClass {
       context: "팔레트 1의 설명",
     },
   ];
+
+  cardButtons = [
+    {
+      title: "불러오기",
+      onClick: () => {},
+    },
+  ];
 }
 
 const PalleteVM = new PalleteVMClass();

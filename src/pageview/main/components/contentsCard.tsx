@@ -62,10 +62,15 @@ const ContentsCard = ({
   color,
   textColor,
   contents,
+  buttons,
 }: {
   color: string;
   textColor: string;
   contents: CardContent;
+  buttons?: Array<{
+    title: string;
+    onClick: () => void;
+  }>;
 }) => {
   return (
     <ContentsCardContainer $color={color} $textColor={textColor}>
@@ -92,10 +97,18 @@ const ContentsCard = ({
         <img src={Bin} width={20} alt="bin" style={{ cursor: "pointer" }} />
       </TitleSection>
       <Context>{contents.context}</Context>
-      <ButtonContainer>
-        <ActionButton text="버튼" onClick={() => {}} isShadow={false} />
-        <ActionButton text="버튼" onClick={() => {}} isShadow={false} />
-      </ButtonContainer>
+      {buttons && (
+        <ButtonContainer>
+          {buttons.map((button, index) => (
+            <ActionButton
+              key={index}
+              text={button.title}
+              onClick={() => {}}
+              isShadow={false}
+            />
+          ))}
+        </ButtonContainer>
+      )}
     </ContentsCardContainer>
   );
 };

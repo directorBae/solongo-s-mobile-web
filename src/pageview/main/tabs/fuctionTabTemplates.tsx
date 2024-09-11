@@ -3,36 +3,26 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ContentsCard from "../components/contentsCard";
 import { CardContent } from "../../../store/types/types";
-import ActionButton from "../../../components/actionButton";
 
-const Title = styled.div`
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-family: Pretendard;
-  width: 100%;
-  padding: 1rem;
-`;
-
+// 가로 스크롤 박스의 스타일
 const SliderWrapper = styled.div`
-  overflow: hidden; /* Slider 영역 외부 숨기기 */
-  width: 100%;
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  white-space: nowrap; /* 카드들이 한 줄로 나열되게 설정 */
+  padding: 1rem;
+
+  scrollbar-width: thin; /* Firefox에서 스크롤바 얇게 */
+  scrollbar-color: #888 #f1f1f1; /* Firefox용 스크롤바 색상 설정 */
 `;
 
-const Slider = styled.div<{ $translateX: number }>`
-  display: flex;
-  transition: transform 0.5s ease-in-out; /* 부드러운 슬라이드 애니메이션 */
-  transform: translateX(${(props) => props.$translateX}px);
-  width: fit-content;
-  gap: 10px;
-`;
+const SlideItem = styled.div`
+  display: inline-block; /* 카드들을 한 줄로 나열하기 위해 설정 */
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  margin-right: 10px;
 
-  margin-top: 1rem;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* 애니메이션 추가 */
+  &:hover {
+    transform: scale(1.05); /* 호버 시 확대 */
+  }
 `;
 
 interface TabProps {
@@ -40,56 +30,21 @@ interface TabProps {
 }
 
 const FunctionTab = observer(({ vm }: TabProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const contents = vm.contentsList;
-  console.log(contents);
-
-  // 왼쪽으로 슬라이드
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  // 오른쪽으로 슬라이드
-  const handleNext = () => {
-    if (currentIndex < contents.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
 
   return (
-    <div>
-      <Title>{vm.title}</Title>
-
-      <SliderWrapper>
-        <Slider $translateX={-currentIndex * (225 + 10)}>
-          {contents.map((content: CardContent, index: number) => (
-            <ContentsCard
-              key={index}
-              color={vm.colors[0]["bg"]}
-              textColor={vm.colors[0]["text"]}
-              contents={content}
-            />
-          ))}
-        </Slider>
-      </SliderWrapper>
-
-      <ButtonContainer>
-        <ActionButton
-          text="이전"
-          onClick={handlePrev}
-          isShadow={true}
-          width="30%"
-        />
-        <ActionButton
-          text="다음"
-          onClick={handleNext}
-          isShadow={true}
-          width="30%"
-        />
-      </ButtonContainer>
-    </div>
+    <SliderWrapper>
+      {contents.map((content: CardContent, index: number) => (
+        <SlideItem key={index}>
+          <ContentsCard
+            color={vm.colors[index % contents.length]["bg"]}
+            textColor={vm.colors[index % contents.length]["text"]}
+            contents={content}
+            buttons={vm.cardButtons}
+          />
+        </SlideItem>
+      ))}
+    </SliderWrapper>
   );
 });
 

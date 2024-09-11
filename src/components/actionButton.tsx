@@ -18,12 +18,12 @@ const Button = styled.button<{ $isShadow: boolean; $width: string }>`
 
   font-family: Pretendard;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.9em;
 `;
 
 interface ActionButtonProps {
   text: string;
-  onClick: () => void;
+  onClick: (() => void) | null;
   isShadow?: boolean;
   width?: string;
 }
@@ -36,7 +36,7 @@ export default function ActionButton({
 }: ActionButtonProps) {
   return (
     <Button
-      onClick={onClick}
+      onClick={() => onClick}
       $isShadow={isShadow ? isShadow : false}
       $width={width ? width : "40%"}
     >
