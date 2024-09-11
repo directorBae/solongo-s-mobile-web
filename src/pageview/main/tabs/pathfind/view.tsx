@@ -6,6 +6,7 @@ import ViaIcon from "../../../../assets/svgs/via.svg";
 import styled from "styled-components";
 import LocationBar from "../../components/locationBar";
 import ActionButton from "../../../../components/actionButton";
+import BottomTabTemplate from "../../components/bottomTabTemplate";
 
 const vm = PathfindVM;
 
@@ -16,63 +17,65 @@ const PathFindInputSection = styled.div`
   flex-direction: column;
 
   align-self: center;
+  gap: 2.5rem;
+
+  padding: 0.5rem 0;
+
+  align-self: center;
+  justify-self: center;
 `;
 
 const PathFindInput = styled.div`
   width: 100%;
   height: 40px;
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 30px;
 
-  margin-top: 10px;
-`;
-
-const IconContainer = styled.div`
-  width: 40px;
-  height: 40px;
-
-  display: flex;
   align-items: center;
   justify-content: center;
 `;
 
+const IconContainer = styled.img`
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`;
+
 const PathfindView = () => {
   return (
-    <>
+    <BottomTabTemplate>
       <Title>{vm.title}</Title>
       <PathFindInputSection>
         <PathFindInput>
-          <IconContainer>
-            <img src={DepartureIcon} alt="Departure" />
-          </IconContainer>
+          <IconContainer src={DepartureIcon} alt="Departure" />
           <LocationBar placeholder="출발지를 설정..." />
         </PathFindInput>
         <PathFindInput>
-          <IconContainer>
-            <img src={ViaIcon} alt="Via" />
-          </IconContainer>
+          <IconContainer src={ViaIcon} alt="Via" />
           <LocationBar placeholder="경유지를 설정..." />
         </PathFindInput>
         <PathFindInput>
-          <IconContainer>
-            <img src={ArrivalIcon} alt="Arrival" />
-          </IconContainer>
+          <IconContainer src={ArrivalIcon} alt="Arrival" />
           <LocationBar placeholder="도착지를 설정..." />
         </PathFindInput>
       </PathFindInputSection>
       <ButtonContainer>
         <ActionButton
-          text="팔레트 그만 보기"
+          text="길찾기"
           onClick={null}
           isShadow={true}
           width="35%"
         />
         <ActionButton text="닫기" onClick={null} isShadow={true} width="35%" />
       </ButtonContainer>
-    </>
+    </BottomTabTemplate>
   );
 };
 

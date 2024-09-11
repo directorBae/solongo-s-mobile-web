@@ -72,7 +72,8 @@ const ContextMaxWidth = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 0.2rem;
-  
+
+  padding: 0.5rem 0;
 `;
 
 interface TabProps {

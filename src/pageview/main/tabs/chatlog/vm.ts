@@ -37,7 +37,7 @@ class ChatlogVMClass {
 
   colors = Array.from({ length: this.contentsList.length }, () => ({
     bg: "#0E0065",
-    text: "#FFFFFF",
+    text: "#ffffff",
   }));
 
   cardButtons = [

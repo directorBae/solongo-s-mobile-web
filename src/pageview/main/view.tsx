@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 import PalleteView from "./tabs/palletes/view";
 import ChatlogView from "./tabs/chatlog/view";
 import PathfindView from "./tabs/pathfind/view";
+import LanguageView from "./tabs/language/view";
 
 interface MainViewProps {
   vm: any;
@@ -21,6 +22,9 @@ const MainView = observer(({ vm }: MainViewProps) => {
       break;
     case "pathfind":
       view = <PathfindView />;
+      break;
+    case "language":
+      view = <LanguageView />;
       break;
     default:
       view = null;

@@ -1,7 +1,6 @@
 import { observer } from "mobx-react";
-import React, { useState } from "react";
 import styled from "styled-components";
-import ContentsCard from "../components/contentsCard";
+import ContentsCard from "./contentsCard";
 import { CardContent } from "../../../store/types/types";
 
 // 가로 스크롤 박스의 스타일
@@ -25,11 +24,11 @@ const SlideItem = styled.div`
   }
 `;
 
-interface TabProps {
+interface SliderProps {
   vm: any;
 }
 
-const FunctionTab = observer(({ vm }: TabProps) => {
+const CardSlider = observer(({ vm }: SliderProps) => {
   const contents = vm.contentsList;
 
   return (
@@ -48,4 +47,4 @@ const FunctionTab = observer(({ vm }: TabProps) => {
   );
 });
 
-export default FunctionTab;
+export default CardSlider;

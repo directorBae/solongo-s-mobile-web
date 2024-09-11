@@ -1,15 +1,16 @@
-import FunctionTab from "../fuctionTabTemplates";
+import CardSlider from "../../components/cardSlider";
 import ChatlogVM from "./vm";
 import { Title, ButtonContainer } from "../../components/TabAssets";
 import ActionButton from "../../../../components/actionButton";
+import BottomTabTemplate from "../../components/bottomTabTemplate";
 
 const vm = ChatlogVM;
 
 const ChatlogView = () => {
   return (
-    <>
+    <BottomTabTemplate>
       <Title>{vm.title}</Title>
-      <FunctionTab vm={vm} />
+      <CardSlider vm={vm} />
       <ButtonContainer>
         <ActionButton
           text="대화 그만 보기"
@@ -19,7 +20,7 @@ const ChatlogView = () => {
         />
         <ActionButton text="닫기" onClick={null} isShadow={true} width="35%" />
       </ButtonContainer>
-    </>
+    </BottomTabTemplate>
   );
 };
 

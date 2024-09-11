@@ -46,6 +46,9 @@ const Context = styled.div`
   font-weight: 200;
   letter-spacing: 0.05rem;
   font-size: 0.9rem;
+
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
 `;
 
 const ButtonContainer = styled.div`
