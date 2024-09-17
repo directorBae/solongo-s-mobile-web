@@ -5,6 +5,7 @@ import { CardContent } from "../../../store/types/types";
 
 // 가로 스크롤 박스의 스타일
 const SliderWrapper = styled.div`
+  margin: 0 0.5rem;
   overflow-x: auto; /* 가로 스크롤 활성화 */
   white-space: nowrap; /* 카드들이 한 줄로 나열되게 설정 */
   padding: 1rem;
