@@ -69,11 +69,16 @@ const PathfindView = () => {
       <ButtonContainer>
         <ActionButton
           text="길찾기"
-          onClick={null}
+          onClick={() => {}}
           isShadow={true}
           width="35%"
         />
-        <ActionButton text="닫기" onClick={null} isShadow={true} width="35%" />
+        <ActionButton
+          text="닫기"
+          onClick={() => {}}
+          isShadow={true}
+          width="35%"
+        />
       </ButtonContainer>
     </BottomTabTemplate>
   );

@@ -3,22 +3,29 @@ import PalleteVM from "./vm";
 import { Title, ButtonContainer } from "../../components/TabAssets";
 import ActionButton from "../../../../components/actionButton";
 import BottomTabTemplate from "../../components/bottomTabTemplate";
+import useMainPageViewModel from "../../vm";
 
-const vm = PalleteVM;
+const palletevm = PalleteVM;
+const mainvm = useMainPageViewModel;
 
 const PalleteView = () => {
   return (
     <BottomTabTemplate>
-      <Title>{vm.title}</Title>
-      <CardSlider vm={vm} />
+      <Title>{palletevm.title}</Title>
+      <CardSlider vm={palletevm} />
       <ButtonContainer>
         <ActionButton
           text="팔레트 그만 보기"
-          onClick={null}
+          onClick={() => palletevm.deactivatePallete()}
           isShadow={true}
           width="35%"
         />
-        <ActionButton text="닫기" onClick={null} isShadow={true} width="35%" />
+        <ActionButton
+          text="닫기"
+          onClick={() => mainvm.setShowBottomTab(false)}
+          isShadow={true}
+          width="35%"
+        />
       </ButtonContainer>
     </BottomTabTemplate>
   );

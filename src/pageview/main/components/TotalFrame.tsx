@@ -5,6 +5,7 @@ import IconButton from "./iconButton";
 import BottomTab from "./tabContainer";
 import KakaoMap from "./map/kakaomap";
 import { observer } from "mobx-react";
+import ModeTitle from "./modeTitle";
 
 const TotalFrameContainer = styled.div`
   width: 100%;
@@ -74,7 +75,7 @@ const TotalFrame = observer(({ vm, tabView }: TotalFrameProps) => {
             <LeftSideButton>
               <IconButton
                 icon="pallete"
-                isClicked={vm.showMode === "pallete"}
+                isClicked={vm.showMode.VMMode === "pallete"}
                 onClick={() => vm.setMode("pallete")}
               />
               {/*<IconButton
@@ -84,7 +85,7 @@ const TotalFrame = observer(({ vm, tabView }: TotalFrameProps) => {
               /> */}
               <IconButton
                 icon="chatlogs"
-                isClicked={vm.showMode === "chatlogs"}
+                isClicked={vm.showMode.VMMode === "chatlogs"}
                 onClick={() => vm.setMode("chatlogs")}
               />
               {/* <IconButton
@@ -94,10 +95,11 @@ const TotalFrame = observer(({ vm, tabView }: TotalFrameProps) => {
               /> */}
               <IconButton
                 icon="pathfind"
-                isClicked={vm.showMode === "pathfind"}
+                isClicked={vm.showMode.VMMode === "pathfind"}
                 onClick={() => vm.setMode("pathfind")}
               />
             </LeftSideButton>
+            <ModeTitle vm={null} />
             <RightSideButton>
               {/* <IconButton
                 icon="profile"
@@ -106,14 +108,14 @@ const TotalFrame = observer(({ vm, tabView }: TotalFrameProps) => {
               /> */}
               <IconButton
                 icon="language"
-                isClicked={vm.showMode === "language"}
+                isClicked={vm.showMode.VMMode === "language"}
                 onClick={() => vm.setMode("language")}
               />
             </RightSideButton>
           </ButtonsContainer>
         </FunctionContainer>
         <BottomTabContainer>
-          <BottomTab children={tabView} isVisible={vm.showBottomTab} />
+          <BottomTab children={tabView} isVisible={vm.showMode.showBottomTab} />
         </BottomTabContainer>
       </TotalFrameContainer>
     </>

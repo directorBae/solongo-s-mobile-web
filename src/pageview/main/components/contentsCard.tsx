@@ -66,6 +66,7 @@ const ContentsCard = ({
   textColor,
   contents,
   buttons,
+  deleteCard,
 }: {
   color: string;
   textColor: string;
@@ -74,6 +75,7 @@ const ContentsCard = ({
     title: string;
     onClick: () => void;
   }>;
+  deleteCard?: () => void;
 }) => {
   return (
     <ContentsCardContainer $color={color} $textColor={textColor}>
@@ -105,6 +107,7 @@ const ContentsCard = ({
             cursor: "pointer",
             filter: textColor === "#ffffff" ? "none" : "invert(1)",
           }}
+          onClick={deleteCard}
         />
       </TitleSection>
       <Context>{contents.context}</Context>

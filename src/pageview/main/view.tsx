@@ -13,7 +13,7 @@ interface MainViewProps {
 const MainView = observer(({ vm }: MainViewProps) => {
   let view = null;
 
-  switch (vm.showMode) {
+  switch (vm.showMode.VMMode) {
     case "pallete":
       view = <PalleteView />;
       break;

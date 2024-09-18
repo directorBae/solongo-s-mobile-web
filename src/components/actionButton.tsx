@@ -28,7 +28,7 @@ const Button = styled.button<{
 
 interface ActionButtonProps {
   text: string;
-  onClick: (() => void) | null;
+  onClick: () => void;
   isShadow?: boolean;
   width?: string;
   height?: string;
@@ -45,7 +45,7 @@ export default function ActionButton({
 }: ActionButtonProps) {
   return (
     <Button
-      onClick={() => onClick}
+      onClick={onClick}
       $isShadow={isShadow ? isShadow : false}
       $width={width ? width : "40%"}
       $height={height ? height : "30px"}
