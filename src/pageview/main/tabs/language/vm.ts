@@ -6,6 +6,7 @@ class LanguageVMClass {
   }
 
   title = "언어 선택 / Choose your language";
+  activated = false;
 }
 
 const LanguageVM = new LanguageVMClass();

@@ -58,9 +58,6 @@ const ButtonContainer = styled.div`
   gap: 1rem;
 `;
 
-// TODO: 콘텐츠카드 만들고, 색상 셋 정의하기
-// 콘텐츠카드 만들면, 각 탭 만들기
-
 const ContentsCard = ({
   color,
   textColor,

@@ -75,7 +75,7 @@ const TotalFrame = observer(({ vm, tabView }: TotalFrameProps) => {
             <LeftSideButton>
               <IconButton
                 icon="pallete"
-                isClicked={vm.showMode.VMMode === "pallete"}
+                isClicked={vm.isIconClicked["pallete"]}
                 onClick={() => vm.setMode("pallete")}
               />
               {/*<IconButton

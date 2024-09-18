@@ -7,6 +7,7 @@ class ChatlogVMClass {
   }
 
   title = "이전 대화 기록 보기";
+  activated = false;
 
   contentsList: CardContent[] = [
     {

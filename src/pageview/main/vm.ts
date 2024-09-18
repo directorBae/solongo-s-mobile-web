@@ -1,5 +1,6 @@
 import { makeAutoObservable, observable, action, reaction } from "mobx";
 import { VMType } from "../../store/types/types";
+import vmconnector from "../../vmconnector/vmconnector";
 
 interface ModeType extends VMType {
   showBottomTab: boolean;
@@ -11,8 +12,13 @@ class MainPageVMClass {
     showBottomTab: false,
   };
 
+  isIconClicked = vmconnector.whereActivated;
+
   setMode = (mode: MainPageVMClass["showMode"]["VMMode"]) => {
     this.showMode.showBottomTab = false;
+    if (mode !== null && this.isIconClicked[mode] === true) {
+      this.showMode.showBottomTab = true;
+    }
     if (mode === this.showMode.VMMode || mode === null) {
       this.showMode.VMMode = null;
       this.showMode.showBottomTab = false;
@@ -31,15 +37,28 @@ class MainPageVMClass {
       showMode: observable,
       setMode: action,
       setShowBottomTab: action,
+      isIconClicked: observable,
     });
+
+    let previousMode: MainPageVMClass["showMode"]["VMMode"] = null;
 
     reaction(
       () => this.showMode.VMMode,
-      (mode) => {
-        console.log("reaction:L mode changed;", mode);
-        if (mode === null) {
+      (currentMode, _reaction) => {
+        console.log(
+          "reaction: mode changed; previous mode:",
+          previousMode,
+          "current mode:",
+          currentMode
+        );
+
+        if (currentMode === null) {
           this.showMode.showBottomTab = false;
         }
+        vmconnector.modeChanged(previousMode, currentMode);
+
+        // 이전 모드를 업데이트
+        previousMode = currentMode;
       }
     );
   }

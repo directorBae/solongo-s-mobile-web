@@ -6,6 +6,7 @@ class PathfindVMClass {
   }
 
   title = "길찾기";
+  activated = false;
 }
 
 const PathfindVM = new PathfindVMClass();
