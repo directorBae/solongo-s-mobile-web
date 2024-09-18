@@ -6,6 +6,7 @@ export const EDIT = "EDIT";
 export const PLACE_ADD = "PLACE_ADD";
 export const PLACE_DEL = "PLACE_DEL";
 export const PLACE_ORDER_CHANGE = "PLACE_ORDER_CHANGE";
+export const INIT_FROM_COOKIES = "INIT_FROM_COOKIES";
 
 // 액션 타입 정의
 interface AddPalleteAction {
@@ -38,6 +39,11 @@ interface PalletePlaceOrderChangeAction {
   payload: { pallete_index: number; place_index: number; target_index: number };
 }
 
+interface InitializeFromCookiesAction {
+  type: typeof INIT_FROM_COOKIES;
+  payload: Pallete[];
+}
+
 // 액션 타입을 하나로 합침
 export type PalleteActionTypes =
   | AddPalleteAction
@@ -45,7 +51,8 @@ export type PalleteActionTypes =
   | EditPalleteAction
   | PalletePlaceAddAction
   | PalletePlaceDelAction
-  | PalletePlaceOrderChangeAction;
+  | PalletePlaceOrderChangeAction
+  | InitializeFromCookiesAction;
 
 // 액션 생성자
 export const addPallete = (pallete: Pallete): AddPalleteAction => ({
@@ -89,4 +96,11 @@ export const placeOrderChange = (
 ): PalletePlaceOrderChangeAction => ({
   type: PLACE_ORDER_CHANGE,
   payload: { pallete_index, place_index, target_index },
+});
+
+export const initializeFromCookies = (
+  palletes: Pallete[]
+): InitializeFromCookiesAction => ({
+  type: INIT_FROM_COOKIES,
+  payload: palletes,
 });
